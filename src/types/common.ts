@@ -5,9 +5,8 @@ export interface BaseEvent {
   joinedYear?: number;
   regDate?: string;
   gender?: string;
-  status?: "grad" | "undergrad";
   createdAt: string;
-  device: "PC" | "Mobile";
+  device: 'PC' | 'Mobile';
   url: string;
   referrer?: string;
   [key: string]: any;

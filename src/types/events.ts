@@ -1,17 +1,17 @@
-import { ExtendEvent } from "./common";
+import { ExtendEvent } from './common';
 
 export interface PageViewEvent
   extends ExtendEvent<{
-    eventType: "page_view";
+    eventType: 'page_view';
     pageTitle: string;
   }> {}
 
 export interface SearchEvent
   extends ExtendEvent<{
-    eventType: "search";
+    eventType: 'search';
     searchLocation: string;
     searchKeyword: string;
-    searchType: "title" | "content" | "title-content" | "nickname";
+    searchType: 'title' | 'content' | 'title-content' | 'nickname';
   }> {}
 
 export interface ClickEvent

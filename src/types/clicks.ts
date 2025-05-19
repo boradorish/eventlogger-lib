@@ -1,7 +1,7 @@
-import { ClickEvent } from "./events";
+import { ClickEvent } from './events';
 
 export interface PostClickEvent extends ClickEvent {
-  eventType: "post_click";
+  eventType: 'post_click';
   postId: string;
   postTitle: string;
   pageNumber: number;
@@ -10,7 +10,7 @@ export interface PostClickEvent extends ClickEvent {
 }
 
 export interface DropdownClickEvent extends ClickEvent {
-  eventType: "dropdown_click";
+  eventType: 'dropdown_click';
   dropdownName: string;
   itemId: string;
 }
