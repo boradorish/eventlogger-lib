@@ -1,9 +1,13 @@
 export interface BaseEvent {
   eventType: string;
+  isAnonymous: boolean;
   userId?: string;
-  anonymousId: string;
-  timestamp: string;
-  device: "PC" | "Mobile" | "Tablet";
+  joinedYear?: number;
+  regDate?: string;
+  gender?: string;
+  status?: "grad" | "undergrad";
+  createdAt: string;
+  device: "PC" | "Mobile";
   url: string;
   referrer?: string;
   [key: string]: any;
