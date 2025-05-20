@@ -31,6 +31,7 @@ const AutoTrack = () => {
         gender: user.gender,
         regDate: user.regDate,
         joinedYear: user.joinedYear,
+        url: window.location.href,
       });
 
       console.log("[AutoTrack] 페이지뷰 기록됨:", url);
