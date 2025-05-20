@@ -1,5 +1,5 @@
 import { useEffect, useCallback } from "react";
-import { useLogger } from "./logger-context";
+import { useLogger } from "./LoggerContext";
 import { BaseEvent } from "./types";
 
 interface TrackOptions {

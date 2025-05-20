@@ -1,5 +1,5 @@
-import { BaseEvent } from './types';
-import { httpTransport } from './transports/httpTransport';
+import { BaseEvent } from "./types";
+import { httpTransport } from "./transports/httpTransport";
 
 export interface LoggerConfig {
   endpoint: string;
@@ -19,7 +19,7 @@ export class EventLogger {
   }
 
   track<E extends BaseEvent>(event: E) {
-    console.log('[Logger] Tracked Event:', event);
+    console.log("[Logger] Tracked Event:", event);
     this.queue.push(event);
   }
 
@@ -29,11 +29,17 @@ export class EventLogger {
 
     try {
       await httpTransport(events, this.endpoint);
-      console.log('[Logger] Events Flushed:', events);
+      console.log("[Logger] Events Flushed:", events);
     } catch (error) {
-      console.error('[Logger] Failed to send events', error);
+      console.error("[Logger] Failed to send events", error);
       this.queue.unshift(...events);
     }
+  }
+
+  sendNow() {
+    clearInterval(this.timerId);
+    this.flush();
+    this.timerId = setInterval(() => this.flush(), this.flushInterval);
   }
 
   dispose() {
