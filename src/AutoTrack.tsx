@@ -4,7 +4,7 @@ import { useLogger } from "./LoggerContext";
 import { useDevice } from "./DeviceContext";
 import { PageViewEvent } from "./types";
 import { isInRegistry } from "./utils/trackRegistry";
-import { useUser } from "./userContext";
+import { useUser } from "./UserContext";
 
 const AutoTrack = () => {
   const logger = useLogger();
