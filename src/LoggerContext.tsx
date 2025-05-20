@@ -1,5 +1,5 @@
-import { createContext, useContext, ReactNode } from "react";
-import { EventLogger, LoggerConfig } from "./logger";
+import { createContext, useContext, ReactNode } from 'react';
+import { EventLogger, LoggerConfig } from './logger';
 
 const LoggerContext = createContext<EventLogger | null>(null);
 
@@ -21,7 +21,7 @@ export function useLogger(): EventLogger {
   const context = useContext(LoggerContext);
 
   if (!context) {
-    throw new Error("LoggerProvider가 최상단에 설정되어 있지 않습니다.");
+    throw new Error('LoggerProvider가 최상단에 설정되어 있지 않습니다.');
   }
 
   return context;

@@ -6,7 +6,7 @@ export interface BaseEvent {
   regDate?: string;
   gender?: string;
   createdAt: string;
-  device: "PC" | "Mobile";
+  device: 'PC' | 'Mobile';
   url: string;
   [key: string]: any;
 }

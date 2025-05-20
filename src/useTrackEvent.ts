@@ -1,9 +1,9 @@
-import { useEffect, useCallback } from "react";
-import { useLogger } from "./LoggerContext";
-import { BaseEvent } from "./types";
+import { useEffect, useCallback } from 'react';
+import { useLogger } from './LoggerContext';
+import { BaseEvent } from './types';
 
 interface TrackOptions {
-  on: "mount" | "click" | "hover";
+  on: 'mount' | 'click' | 'hover';
 }
 
 export function useTrackEvent<E extends BaseEvent>(
@@ -13,19 +13,19 @@ export function useTrackEvent<E extends BaseEvent>(
   const logger = useLogger();
 
   useEffect(() => {
-    if (options.on === "mount") {
+    if (options.on === 'mount') {
       logger.track(event);
     }
   }, [options.on, event, logger]);
 
   const handleClick = useCallback(() => {
-    if (options.on === "click") {
+    if (options.on === 'click') {
       logger.track(event);
     }
   }, [options.on, event, logger]);
 
   const handleHover = useCallback(() => {
-    if (options.on === "hover") {
+    if (options.on === 'hover') {
       logger.track(event);
     }
   }, [options.on, event, logger]);

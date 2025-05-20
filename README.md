@@ -8,7 +8,7 @@ An extendable event logging library for Next.js + Django + ClickHouse.
 - 🔄 **Click Event Tracking** - Capture click events declaratively.
 - ✏️ **Custom Event Tracking** - Easily extend with your own custom events.
 - 👥 **User Information Sync** - Sync user data seamlessly across events.
-- 📱 **Device Detection (Mobile, Tablet, PC)** - Automatically detects device type.
+- 📱 **Device Detection (Mobile, PC)** - Automatically detects device type.
 
 ---
 
