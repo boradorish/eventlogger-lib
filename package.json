@@ -17,5 +17,8 @@
     "rollup-plugin-typescript2": "^0.36.0",
     "ts-jest": "^29.3.4",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "next": "^15.3.2"
   }
 }

@@ -1,8 +1,11 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
 interface UserContextType {
-  userId: string | null;
+  userId?: string;
   isAnonymous: boolean;
+  joinedYear?: number;
+  regDate?: string;
+  gender?: string;
   setUser: (userId: string) => void;
   clearUser: () => void;
 }
@@ -10,7 +13,7 @@ interface UserContextType {
 const UserContext = createContext<UserContextType | null>(null);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [userId, setUserId] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string | undefined>(undefined);
   const [isAnonymous, setIsAnonymous] = useState(true);
 
   const setUser = (id: string) => {
@@ -19,7 +22,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const clearUser = () => {
-    setUserId(null);
+    setUserId(undefined);
     setIsAnonymous(true);
   };
 
