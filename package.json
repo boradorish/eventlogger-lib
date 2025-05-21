@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@eslint/js": "^9.27.0",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@testing-library/react": "^16.3.0",
@@ -20,7 +21,8 @@
     "rollup": "^4.41.0",
     "rollup-plugin-typescript2": "^0.36.0",
     "ts-jest": "^29.3.4",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.1"
   },
   "dependencies": {
     "next": "^15.3.2"
@@ -30,6 +32,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ext .ts,.tsx src",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "test": "jest --passWithNoTests",
     "test:user": "jest src/__tests__/user-context.test.ts",

@@ -1,5 +1,5 @@
 export interface BaseEvent {
-  eventType: string;
+  eventType: 'pageview' | 'click' | 'search';
   isAnonymous: boolean;
   userId?: string;
   joinedYear?: number;
@@ -8,6 +8,7 @@ export interface BaseEvent {
   createdAt: string;
   device: 'PC' | 'Mobile';
   url: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 

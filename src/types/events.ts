@@ -1,29 +1,22 @@
 import { ExtendEvent } from './common';
 
-export interface PageViewEvent
-  extends ExtendEvent<{
-    eventType: 'page_view';
-    pageTitle: string;
-  }> {}
+export type PageViewEvent = ExtendEvent<{
+  pageTitle: string;
+}>;
 
-export interface SearchEvent
-  extends ExtendEvent<{
-    eventType: 'search';
-    searchLocation: string;
-    searchKeyword: string;
-    searchType: 'title' | 'content' | 'title-content' | 'nickname';
-  }> {}
+export type SearchEvent = ExtendEvent<{
+  searchLocation: string;
+  searchKeyword: string;
+  searchType: 'title' | 'content' | 'title-content' | 'nickname';
+}>;
 
-export interface ClickEvent
-  extends ExtendEvent<{
-    eventType: string;
-    pageTitle: string;
-    target: string;
-  }> {}
+export type ClickEvent = ExtendEvent<{
+  pageTitle: string;
+  target: string;
+}>;
 
-export interface CustomEvent
-  extends ExtendEvent<{
-    eventType: string;
-    actionName: string;
-    metadata?: Record<string, any>;
-  }> {}
+export type CustomEvent = ExtendEvent<{
+  actionName: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  metadata?: Record<string, any>;
+}>;
