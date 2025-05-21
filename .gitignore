@@ -2,7 +2,6 @@
 node_modules/
 
 # NPM Cache 및 Lock 파일 
-package-lock.json
 yarn.lock
 
 .next/
