@@ -4,6 +4,7 @@ import { BaseEvent } from './types';
 
 interface TrackOptions {
   on: 'mount' | 'click' | 'hover';
+  disabled?: boolean;
 }
 
 export function useTrackEvent<E extends BaseEvent>(
@@ -11,24 +12,28 @@ export function useTrackEvent<E extends BaseEvent>(
   options: TrackOptions,
 ) {
   const logger = useLogger();
+  const { on, disabled } = options;
 
   useEffect(() => {
-    if (options.on === 'mount') {
+    if (disabled) return;
+    if (on === 'mount') {
       logger.track(event);
     }
-  }, [options.on, event, logger]);
+  }, [on, event, logger]);
 
   const handleClick = useCallback(() => {
-    if (options.on === 'click') {
+    if (disabled) return;
+    if (on === 'click') {
       logger.track(event);
     }
-  }, [options.on, event, logger]);
+  }, [on, event, logger]);
 
   const handleHover = useCallback(() => {
-    if (options.on === 'hover') {
+    if (disabled) return;
+    if (on === 'hover') {
       logger.track(event);
     }
-  }, [options.on, event, logger]);
+  }, [on, event, logger]);
 
   return {
     onClick: handleClick,

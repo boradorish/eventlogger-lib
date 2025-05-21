@@ -1,26 +1,52 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useState, useEffect, useRef } from 'react';
 import { useTrackEvent } from './useTrackEvent';
 import { BaseEvent } from './types';
 import { addToRegistry, removeFromRegistry } from './utils/trackRegistry';
 interface TrackProps<E extends BaseEvent> {
-  event: E;
+  eventName: string;
   on: 'mount' | 'click' | 'hover';
+  if?: boolean;
+  once?: boolean;
+  attributes?: Partial<E>;
   children: ReactNode;
 }
 
-const Track = <E extends BaseEvent>({ event, on, children }: TrackProps<E>) => {
-  const eventId = `${event.eventType}::${event.url || window.location.href}`;
+const Track = <E extends BaseEvent>({
+  eventName,
+  on = 'mount',
+  if: shouldTrack = true,
+  once = false,
+  attributes,
+  children,
+}: TrackProps<E>) => {
+  const [hasTracked, setHasTracked] = useState(false);
+  const eventId = `${eventName}::${window.location.href}`;
+  const eventProps = useTrackEvent<E>(
+    {
+      eventType: eventName,
+      ...attributes,
+    } as E,
+    { on, disabled: !shouldTrack || (once && hasTracked) },
+  );
+  const trackedRef = useRef(false);
 
   useEffect(() => {
-    console.log('[Track] 등록됨:', eventId);
-    addToRegistry(eventId);
+    if (!shouldTrack) return;
+
+    if (on === 'mount' && (!once || !trackedRef.current)) {
+      console.log('[Track] 등록됨:', eventId);
+      addToRegistry(eventId);
+      trackedRef.current = true;
+      setHasTracked(true);
+    }
 
     return () => {
-      console.log('[Track] 해제됨:', eventId);
-      removeFromRegistry(eventId);
+      if (on === 'mount') {
+        console.log('[Track] 해제됨:', eventId);
+        removeFromRegistry(eventId);
+      }
     };
-  }, [eventId]);
-  const eventProps = useTrackEvent<E>(event, { on });
+  }, [eventId, shouldTrack, once, on]);
 
   return <div {...eventProps}>{children}</div>;
 };
