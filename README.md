@@ -1,6 +1,6 @@
 # EventLogger
 
-An extendable, declarative event logging library for **Next.js + Django + ClickHouse** based applications.
+An extendable, declarative event logging library for **Next.js** based interactive web applications.
 
 ## 🚀 Features
 
@@ -41,7 +41,7 @@ export default function App({ Component, pageProps }) {
       <DeviceProvider>
         <LoggerProvider
           config={{
-            endpoint: process.env.NEXT_PUBLIC_CLICKHOUSE_URL as string,
+            endpoint: process.env.NEXT_PUBLIC_URL as string,
             batchInterval: 5000,
           }}
         >
@@ -75,7 +75,7 @@ export default function HomePage() {
     <Track
       eventName="ClickButton"
       on="click"
-      attributes={{ buttonId: 'cta', source: 'homepage' }}
+      attributes={{ pageTitle: 'My Page', target: 'btn_id' }}
     >
       <button>Click Me!</button>
     </Track>
@@ -129,12 +129,12 @@ const DeviceInfo = () => {
 
 ---
 
-## 🔍 **ClickHouse Integration**
+## 🔍 **DataBase Integration**
 
-Add your ClickHouse endpoint in your `.env.local`:
+Add your DataBase endpoint in your `.env.local`:
 
 ```
-NEXT_PUBLIC_CLICKHOUSE_URL=https://clickhouse.yourdomain.com
+NEXT_PUBLIC_URL=https://dataBase.yourdomain.com
 ```
 
 ---
