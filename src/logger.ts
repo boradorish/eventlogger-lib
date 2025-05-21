@@ -7,10 +7,10 @@ export interface LoggerConfig {
 }
 
 export class EventLogger {
-  private queue: BaseEvent[] = [];
-  private flushInterval: number;
+  public queue: BaseEvent[] = [];
+  public flushInterval: number;
   private timerId: NodeJS.Timeout;
-  private endpoint: string;
+  public endpoint: string;
 
   constructor(config: LoggerConfig) {
     this.flushInterval = config.batchInterval || 5000;
