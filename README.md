@@ -1,21 +1,22 @@
 # EventLogger
 
-An extendable event logging library for Next.js + Django + ClickHouse.
+An extendable, declarative event logging library for **Next.js + Django + ClickHouse** based applications.
 
 ## 🚀 Features
 
-- 🔍 **Page View Tracking** - Automatically logs page views on navigation.
-- 🔄 **Click Event Tracking** - Capture click events declaratively.
-- ✏️ **Custom Event Tracking** - Easily extend with your own custom events.
-- 👥 **User Information Sync** - Sync user data seamlessly across events.
-- 📱 **Device Detection (Mobile, PC)** - Automatically detects device type.
+- 🔍 **Automatic Page View Tracking**
+- 🖱️ **Declarative Click & Hover Event Logging**
+- 👥 **User Context Injection**
+- 📱 **Device Type Detection (Mobile / PC)**
 
 ---
 
 ## 📦 Installation
 
+This package is not yet published on NPM. You can install it locally:
+
 ```bash
-npm install event-logger
+npm install /path/to/event-logger
 ```
 
 ---
@@ -32,7 +33,7 @@ import {
   UserProvider,
   DeviceProvider,
   AutoTrack,
-} from "event-logger";
+} from 'event-logger';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -55,7 +56,7 @@ export default function App({ Component, pageProps }) {
 
 ---
 
-### 2️⃣ **Page View Tracking**
+### 2️⃣ **Automatic Page View Tracking**
 
 - Page views are automatically tracked when navigation occurs.
 - Includes `document.title` and `device type`.
@@ -67,17 +68,14 @@ export default function App({ Component, pageProps }) {
 Wrap any component with `<Track>` to automatically capture click events.
 
 ```tsx
-import { Track } from "event-logger";
+import { Track } from 'event-logger';
 
 export default function HomePage() {
   return (
     <Track
-      event={{
-        eventType: "click",
-        url: window.location.href,
-        createdAt: new Date().toISOString(),
-      }}
+      eventName="ClickButton"
       on="click"
+      attributes={{ buttonId: 'cta', source: 'homepage' }}
     >
       <button>Click Me!</button>
     </Track>
@@ -92,13 +90,13 @@ export default function HomePage() {
 - Easily sync user data across tracked events.
 
 ```tsx
-import { useUser } from "event-logger";
+import { useUser } from 'event-logger';
 
 const LoginButton = () => {
   const { setUser } = useUser();
 
   const handleLogin = () => {
-    setUser("user123");
+    setUser('user123');
   };
 
   return <button onClick={handleLogin}>Login</button>;
@@ -112,7 +110,7 @@ const LoginButton = () => {
 Get the current device type (`Mobile`, `PC`).
 
 ```tsx
-import { useDevice } from "event-logger";
+import { useDevice } from 'event-logger';
 
 const DeviceInfo = () => {
   const { device } = useDevice();
@@ -161,15 +159,3 @@ To run tests:
 ```bash
 npm test
 ```
-
----
-
-## ✏️ **Contributing**
-
-Feel free to contribute! Open issues and pull requests are welcome.
-
----
-
-## 📄 **License**
-
-MIT License. See `LICENSE` for more information.
