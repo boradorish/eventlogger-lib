@@ -141,18 +141,12 @@ NEXT_PUBLIC_CLICKHOUSE_URL=https://clickhouse.yourdomain.com
 
 ## ✅ **To Do**
 
-- [ ] SPA history.pushState support
-- [ ] Error logging and retry mechanism
-- [ ] Network failover handling
-- [ ] Customizable tracking filters
+- [ ] Scroll / Viewport Tracking
+- [ ] Time-on-page / Dwell time
 
 ---
 
 ## 🛠️ **Development**
-
-```bash
-npm run dev
-```
 
 To run tests:
 
