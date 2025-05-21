@@ -22,7 +22,7 @@ const AutoTrack = () => {
       }
 
       logger.track<PageViewEvent>({
-        eventType: 'page_view',
+        eventType: 'pageview',
         createdAt: new Date().toISOString(),
         device: device,
         pageTitle: document.title,

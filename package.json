@@ -29,7 +29,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "rollup -c",
     "start": "next start",
     "lint": "eslint --ext .ts,.tsx src",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
@@ -37,6 +37,7 @@
     "test": "jest --passWithNoTests",
     "test:user": "jest src/__tests__/user-context.test.ts",
     "test:device": "jest src/__tests__/device-context.test.ts",
-    "test:logger": "jest src/__tests__/logger-context.test.ts"
+    "test:logger": "jest src/__tests__/logger-context.test.ts",
+    "type-check": "tsc --noEmit"
   }
 }

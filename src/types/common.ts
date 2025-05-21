@@ -1,5 +1,5 @@
 export interface BaseEvent {
-  eventType: 'pageview' | 'click' | 'search';
+  eventType: string;
   isAnonymous: boolean;
   userId?: string;
   joinedYear?: number;
